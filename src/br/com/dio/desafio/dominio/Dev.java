@@ -67,21 +67,32 @@ public class Dev {
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, cursosInscritos, cursosConcluidos);
+        return Objects.hash(nome, cursosInscritos, cursosConcluidos, mentoriasInscritas, mentoriasConcluidas);
     }
 
     public void inscreverBootcamp(Bootcamp bootcamp) {
         this.cursosInscritos.addAll(bootcamp.getCursos());
+        this.mentoriasInscritas.addAll(bootcamp.getMentorias());
         bootcamp.getDevsInscritos().add(this);
     }
 
-    public void progredir() {
+    public void progredirCurso() {
         Optional<Curso> curso = this.cursosInscritos.stream().findFirst();
         if (curso.isPresent()) {
             this.cursosConcluidos.add(curso.get());
             this.cursosInscritos.remove(curso.get());
         } else {
             System.err.println("Você não está matriculado em nenhum conteúdo!");
+        }
+    }
+
+    public void progredirMentoria() {
+        Optional<Mentoria> mentoria = this.mentoriasInscritas.stream().findFirst();
+        if (mentoria.isPresent()) {
+            this.mentoriasConcluidas.add(mentoria.get());
+            this.mentoriasInscritas.remove(mentoria.get());
+        } else {
+            System.err.println("Você não está matriculado em nenhuma mentoria!");
         }
     }
 

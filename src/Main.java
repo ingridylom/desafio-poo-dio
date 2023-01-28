@@ -89,30 +89,39 @@ public class Main {
         // endregion
 
         // region Devs
+        System.out.println("-------");
+        System.out.println("-------");
         Dev devIngridy = new Dev();
         devIngridy.setNome("Ingridy");
         devIngridy.inscreverBootcamp(bootcampJava);
         System.out.println("Cursos Inscritos Ingridy:" + devIngridy.getCursosInscritos());
-        devIngridy.progredir();
-        devIngridy.progredir();
+        System.out.println("Mentorias Inscritas Ingridy:" + devIngridy.getMentoriasInscritas());
+        devIngridy.progredirCurso();
+        devIngridy.progredirCurso();
+        devIngridy.progredirMentoria();
         System.out.println("-");
         System.out.println("Cursos Inscritos Ingridy:" + devIngridy.getCursosInscritos());
         System.out.println("Cursos Concluídos Ingridy:" + devIngridy.getCursosConcluidos());
+        System.out.println("Mentorias Inscritas Ingridy:" + devIngridy.getMentoriasInscritas());
+        System.out.println("Mentorias Concluídas Ingridy:" + devIngridy.getMentoriasConcluidas());
         System.out.println("XP:" + devIngridy.calcularTotalXp());
 
         System.out.println("-------");
 
-        Dev devJoao = new Dev();
-        devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcampJS);
-        System.out.println("Cursos Inscritos João:" + devJoao.getCursosInscritos());
-        devJoao.progredir();
-        devJoao.progredir();
-        devJoao.progredir();
+        Dev devMayron = new Dev();
+        devMayron.setNome("Mayron");
+        devMayron.inscreverBootcamp(bootcampJS);
+        System.out.println("Cursos Inscritos Mayron:" + devMayron.getCursosInscritos());
+        System.out.println("Mentorias Inscritas Mayron:" + devMayron.getMentoriasInscritas());
+        devMayron.progredirCurso();
+        devMayron.progredirCurso();
+        devMayron.progredirCurso();
         System.out.println("-");
-        System.out.println("Cursos Inscritos João:" + devJoao.getCursosInscritos());
-        System.out.println("Cursos Concluidos João:" + devJoao.getCursosConcluidos());
-        System.out.println("XP:" + devJoao.calcularTotalXp());
+        System.out.println("Cursos Inscritos Mayron:" + devMayron.getCursosInscritos());
+        System.out.println("Cursos Concluidos Mayron:" + devMayron.getCursosConcluidos());
+        System.out.println("Mentorias Inscritas Mayron:" + devMayron.getMentoriasInscritas());
+        System.out.println("Mentorias Concluídas Mayron:" + devMayron.getMentoriasConcluidas());
+        System.out.println("XP:" + devMayron.calcularTotalXp());
         // endregion
     }
 
