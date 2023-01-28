@@ -4,60 +4,116 @@ import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        Curso curso1 = new Curso();
-        curso1.setTitulo("curso java");
-        curso1.setDescricao("descrição curso java");
-        curso1.setCargaHoraria(8);
+        // region Cursos
+        Curso cursoJava = new Curso();
+        cursoJava.setTitulo("curso java");
+        cursoJava.setDescricao("descrição curso java");
+        cursoJava.setCargaHoraria(48);
 
-        Curso curso2 = new Curso();
-        curso2.setTitulo("curso js");
-        curso2.setDescricao("descrição curso js");
-        curso2.setCargaHoraria(4);
+        Curso cursoJS = new Curso();
+        cursoJS.setTitulo("curso js");
+        cursoJS.setDescricao("descrição curso js");
+        cursoJS.setCargaHoraria(18);
 
-        Mentoria mentoria = new Mentoria();
-        mentoria.setTitulo("mentoria de java");
-        mentoria.setDescricao("descrição mentoria java");
-        mentoria.setData(LocalDate.now());
+        Curso cursoPython = new Curso();
+        cursoPython.setTitulo("curso python");
+        cursoPython.setDescricao("descrição curso python");
+        cursoPython.setCargaHoraria(20);
 
-        /*System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);*/
+        Curso cursoGit = new Curso();
+        cursoGit.setTitulo("curso git");
+        cursoGit.setDescricao("descrição curso git");
+        cursoGit.setCargaHoraria(2);
 
-        Bootcamp bootcamp = new Bootcamp();
-        bootcamp.setNome("Bootcamp Java Developer");
-        bootcamp.setDescricao("Descrição Bootcamp Java Developer");
-        bootcamp.getConteudos().add(curso1);
-        bootcamp.getConteudos().add(curso2);
-        bootcamp.getConteudos().add(mentoria);
+        Curso cursoSCRUM = new Curso();
+        cursoSCRUM.setTitulo("curso SCRUM");
+        cursoSCRUM.setDescricao("descrição curso SCRUM");
+        cursoSCRUM.setCargaHoraria(3);
+        // endregion
 
-        Dev devCamila = new Dev();
-        devCamila.setNome("Camila");
-        devCamila.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        devCamila.progredir();
-        devCamila.progredir();
+        // region Mentorias
+        Mentoria mentoriaJava = new Mentoria();
+        mentoriaJava.setTitulo("mentoria de java");
+        mentoriaJava.setDescricao("descrição mentoria java");
+        mentoriaJava.setData(LocalDate.now());
+
+        Mentoria mentoriaJS = new Mentoria();
+        mentoriaJS.setTitulo("mentoria de js");
+        mentoriaJS.setDescricao("descrição mentoria js");
+        mentoriaJS.setData(LocalDate.now());
+
+        Mentoria mentoriaPython = new Mentoria();
+        mentoriaPython.setTitulo("mentoria de python");
+        mentoriaPython.setDescricao("descrição mentoria python");
+        mentoriaPython.setData(LocalDate.now());
+
+        Mentoria mentoriaSoftSkills = new Mentoria();
+        mentoriaSoftSkills.setTitulo("mentoria de soft skills");
+        mentoriaSoftSkills.setDescricao("descrição mentoria soft skills");
+        mentoriaSoftSkills.setData(LocalDate.now());
+
+        Mentoria mentoriaAgil = new Mentoria();
+        mentoriaAgil.setTitulo("mentoria de desenvolvimento agil");
+        mentoriaAgil.setDescricao("descrição mentoria desenvolvimento agil");
+        mentoriaAgil.setData(LocalDate.now());
+        // endregion
+
+        // region Bootcamps
+        Bootcamp bootcampJava = new Bootcamp();
+        bootcampJava.setNome("Bootcamp Java Developer");
+        bootcampJava.setDescricao("Descrição Bootcamp Java Developer");
+        Set<Curso> cursosJava = Set.of(cursoJava, cursoGit, cursoSCRUM);
+        bootcampJava.setCursos(cursosJava);
+        Set<Mentoria> mentoriasJava = Set.of(mentoriaJava, mentoriaSoftSkills, mentoriaAgil);
+        bootcampJava.setMentorias(mentoriasJava);
+
+        Bootcamp bootcampJS = new Bootcamp();
+        bootcampJS.setNome("Bootcamp JS Developer");
+        bootcampJS.setDescricao("Descrição Bootcamp JS Developer");
+        Set<Curso> cursosJS = Set.of(cursoJS, cursoGit, cursoSCRUM);
+        bootcampJS.setCursos(cursosJS);
+        Set<Mentoria> mentoriasJS = Set.of(mentoriaJS, mentoriaSoftSkills, mentoriaAgil);
+        bootcampJS.setMentorias(mentoriasJS);
+
+        Bootcamp bootcampPython = new Bootcamp();
+        bootcampPython.setNome("Bootcamp Python Developer");
+        bootcampPython.setDescricao("Descrição Bootcamp Python Developer");
+        Set<Curso> cursosPython = Set.of(cursoPython, cursoGit, cursoSCRUM);
+        bootcampPython.setCursos(cursosPython);
+        Set<Mentoria> mentoriasPython = Set.of(mentoriaPython, mentoriaSoftSkills, mentoriaAgil);
+        bootcampPython.setMentorias(mentoriasPython);
+        // endregion
+
+        // region Devs
+        Dev devIngridy = new Dev();
+        devIngridy.setNome("Ingridy");
+        devIngridy.inscreverBootcamp(bootcampJava);
+        System.out.println("Cursos Inscritos Ingridy:" + devIngridy.getCursosInscritos());
+        devIngridy.progredir();
+        devIngridy.progredir();
         System.out.println("-");
-        System.out.println("Conteúdos Inscritos Camila:" + devCamila.getConteudosInscritos());
-        System.out.println("Conteúdos Concluídos Camila:" + devCamila.getConteudosConcluidos());
-        System.out.println("XP:" + devCamila.calcularTotalXp());
+        System.out.println("Cursos Inscritos Ingridy:" + devIngridy.getCursosInscritos());
+        System.out.println("Cursos Concluídos Ingridy:" + devIngridy.getCursosConcluidos());
+        System.out.println("XP:" + devIngridy.calcularTotalXp());
 
         System.out.println("-------");
 
         Dev devJoao = new Dev();
         devJoao.setNome("Joao");
-        devJoao.inscreverBootcamp(bootcamp);
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
+        devJoao.inscreverBootcamp(bootcampJS);
+        System.out.println("Cursos Inscritos João:" + devJoao.getCursosInscritos());
         devJoao.progredir();
         devJoao.progredir();
         devJoao.progredir();
         System.out.println("-");
-        System.out.println("Conteúdos Inscritos João:" + devJoao.getConteudosInscritos());
-        System.out.println("Conteúdos Concluidos João:" + devJoao.getConteudosConcluidos());
+        System.out.println("Cursos Inscritos João:" + devJoao.getCursosInscritos());
+        System.out.println("Cursos Concluidos João:" + devJoao.getCursosConcluidos());
         System.out.println("XP:" + devJoao.calcularTotalXp());
-
+        // endregion
     }
 
 }
