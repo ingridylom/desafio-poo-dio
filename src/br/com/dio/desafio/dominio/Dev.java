@@ -20,19 +20,19 @@ public class Dev {
         this.nome = nome;
     }
 
-    public Set<Curso> getConteudosInscritos() {
+    public Set<Curso> getCursosInscritos() {
         return cursosInscritos;
     }
 
-    public void setConteudosInscritos(Set<Curso> cursosInscritos) {
+    public void setCursosInscritos(Set<Curso> cursosInscritos) {
         this.cursosInscritos = cursosInscritos;
     }
 
-    public Set<Curso> getConteudosConcluidos() {
+    public Set<Curso> getCursosConcluidos() {
         return cursosConcluidos;
     }
 
-    public void setConteudosConcluidos(Set<Curso> cursosConcluidos) {
+    public void setCursosConcluidos(Set<Curso> cursosConcluidos) {
         this.cursosConcluidos = cursosConcluidos;
     }
 
