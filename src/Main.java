@@ -1,4 +1,5 @@
 import br.com.dio.desafio.dominio.Bootcamp;
+import br.com.dio.desafio.dominio.Conteudo;
 import br.com.dio.desafio.dominio.Curso;
 import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
@@ -66,26 +67,37 @@ public class Main {
         Bootcamp bootcampJava = new Bootcamp();
         bootcampJava.setNome("Bootcamp Java Developer");
         bootcampJava.setDescricao("Descrição Bootcamp Java Developer");
-        Set<Curso> cursosJava = Set.of(cursoJava, cursoGit, cursoSCRUM);
-        bootcampJava.setCursos(cursosJava);
-        Set<Mentoria> mentoriasJava = Set.of(mentoriaJava, mentoriaSoftSkills, mentoriaAgil);
-        bootcampJava.setMentorias(mentoriasJava);
+        Set<Conteudo> conteudosJava = Set.of(
+                cursoJava,
+                cursoGit,
+                cursoSCRUM,
+                mentoriaJava,
+                mentoriaSoftSkills,
+                mentoriaAgil);
+        bootcampJava.setConteudos(conteudosJava);
 
         Bootcamp bootcampJS = new Bootcamp();
         bootcampJS.setNome("Bootcamp JS Developer");
         bootcampJS.setDescricao("Descrição Bootcamp JS Developer");
-        Set<Curso> cursosJS = Set.of(cursoJS, cursoGit, cursoSCRUM);
-        bootcampJS.setCursos(cursosJS);
-        Set<Mentoria> mentoriasJS = Set.of(mentoriaJS, mentoriaSoftSkills, mentoriaAgil);
-        bootcampJS.setMentorias(mentoriasJS);
+        Set<Conteudo> cursosJS = Set.of(
+                cursoJS,
+                cursoGit,
+                cursoSCRUM,
+                mentoriaJS,
+                mentoriaSoftSkills,
+                mentoriaAgil);
+        bootcampJS.setConteudos(cursosJS);
 
         Bootcamp bootcampPython = new Bootcamp();
         bootcampPython.setNome("Bootcamp Python Developer");
         bootcampPython.setDescricao("Descrição Bootcamp Python Developer");
-        Set<Curso> cursosPython = Set.of(cursoPython, cursoGit, cursoSCRUM);
-        bootcampPython.setCursos(cursosPython);
-        Set<Mentoria> mentoriasPython = Set.of(mentoriaPython, mentoriaSoftSkills, mentoriaAgil);
-        bootcampPython.setMentorias(mentoriasPython);
+        Set<Conteudo> cursosPython = Set.of(
+                cursoPython,
+                cursoGit,
+                cursoSCRUM,
+                mentoriaSoftSkills,
+                mentoriaAgil);
+        bootcampPython.setConteudos(cursosPython);
         // endregion
 
         // region Devs
@@ -94,16 +106,15 @@ public class Main {
         Dev devIngridy = new Dev();
         devIngridy.setNome("Ingridy");
         devIngridy.inscreverBootcamp(bootcampJava);
-        System.out.println("Cursos Inscritos Ingridy:" + devIngridy.getCursosInscritos());
-        System.out.println("Mentorias Inscritas Ingridy:" + devIngridy.getMentoriasInscritas());
-        devIngridy.progredirCurso();
-        devIngridy.progredirCurso();
-        devIngridy.progredirMentoria();
+        System.out.println("Conteudos Inscritos Ingridy:" + devIngridy.getConteudosInscritos());
+        devIngridy.progredir();
+        devIngridy.progredir();
+        devIngridy.progredir();
+        devIngridy.progredir();
+        devIngridy.progredir();
         System.out.println("-");
-        System.out.println("Cursos Inscritos Ingridy:" + devIngridy.getCursosInscritos());
-        System.out.println("Cursos Concluídos Ingridy:" + devIngridy.getCursosConcluidos());
-        System.out.println("Mentorias Inscritas Ingridy:" + devIngridy.getMentoriasInscritas());
-        System.out.println("Mentorias Concluídas Ingridy:" + devIngridy.getMentoriasConcluidas());
+        System.out.println("Conteudos Inscritos Ingridy:" + devIngridy.getConteudosInscritos());
+        System.out.println("Conteudos Concluídos Ingridy:" + devIngridy.getConteudosConcluidos());
         System.out.println("XP:" + devIngridy.calcularTotalXp());
 
         System.out.println("-------");
@@ -111,16 +122,13 @@ public class Main {
         Dev devMayron = new Dev();
         devMayron.setNome("Mayron");
         devMayron.inscreverBootcamp(bootcampJS);
-        System.out.println("Cursos Inscritos Mayron:" + devMayron.getCursosInscritos());
-        System.out.println("Mentorias Inscritas Mayron:" + devMayron.getMentoriasInscritas());
-        devMayron.progredirCurso();
-        devMayron.progredirCurso();
-        devMayron.progredirCurso();
+        System.out.println("Conteudos Inscritos Mayron:" + devMayron.getConteudosInscritos());
+        devMayron.progredir();
+        devMayron.progredir();
+        devMayron.progredir();
         System.out.println("-");
-        System.out.println("Cursos Inscritos Mayron:" + devMayron.getCursosInscritos());
-        System.out.println("Cursos Concluidos Mayron:" + devMayron.getCursosConcluidos());
-        System.out.println("Mentorias Inscritas Mayron:" + devMayron.getMentoriasInscritas());
-        System.out.println("Mentorias Concluídas Mayron:" + devMayron.getMentoriasConcluidas());
+        System.out.println("Conteudos Inscritos Mayron:" + devMayron.getConteudosInscritos());
+        System.out.println("Conteudos Concluidos Mayron:" + devMayron.getConteudosConcluidos());
         System.out.println("XP:" + devMayron.calcularTotalXp());
         // endregion
     }

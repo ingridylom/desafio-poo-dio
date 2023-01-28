@@ -5,10 +5,8 @@ import java.util.*;
 public class Dev {
     // region Properties
     private String nome;
-    private Set<Curso> cursosInscritos = new LinkedHashSet<>();
-    private Set<Curso> cursosConcluidos = new LinkedHashSet<>();
-    private Set<Mentoria> mentoriasInscritas = new LinkedHashSet<>();
-    private Set<Mentoria> mentoriasConcluidas = new LinkedHashSet<>();
+    private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
+    private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
     // endregion
 
     // region Getters and setters
@@ -20,36 +18,20 @@ public class Dev {
         this.nome = nome;
     }
 
-    public Set<Curso> getCursosInscritos() {
-        return cursosInscritos;
+    public Set<Conteudo> getConteudosInscritos() {
+        return conteudosInscritos;
     }
 
-    public void setCursosInscritos(Set<Curso> cursosInscritos) {
-        this.cursosInscritos = cursosInscritos;
+    public void setConteudosInscritos(Set<Conteudo> conteudosInscritos) {
+        this.conteudosInscritos = conteudosInscritos;
     }
 
-    public Set<Curso> getCursosConcluidos() {
-        return cursosConcluidos;
+    public Set<Conteudo> getConteudosConcluidos() {
+        return conteudosConcluidos;
     }
 
-    public void setCursosConcluidos(Set<Curso> cursosConcluidos) {
-        this.cursosConcluidos = cursosConcluidos;
-    }
-
-    public Set<Mentoria> getMentoriasInscritas() {
-        return mentoriasInscritas;
-    }
-
-    public void setMentoriasInscritas(Set<Mentoria> mentoriasInscritas) {
-        this.mentoriasInscritas = mentoriasInscritas;
-    }
-
-    public Set<Mentoria> getMentoriasConcluidas() {
-        return mentoriasConcluidas;
-    }
-
-    public void setMentoriasConcluidas(Set<Mentoria> mentoriasConcluidas) {
-        this.mentoriasConcluidas = mentoriasConcluidas;
+    public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
+        this.conteudosConcluidos = conteudosConcluidos;
     }
     // endregion
 
@@ -61,53 +43,36 @@ public class Dev {
         if (o == null || getClass() != o.getClass())
             return false;
         Dev dev = (Dev) o;
-        return Objects.equals(nome, dev.nome) && Objects.equals(cursosInscritos, dev.cursosInscritos)
-                && Objects.equals(cursosConcluidos, dev.cursosConcluidos);
+        return Objects.equals(nome, dev.nome) && Objects.equals(conteudosInscritos, dev.conteudosInscritos)
+                && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, cursosInscritos, cursosConcluidos, mentoriasInscritas, mentoriasConcluidas);
+        return Objects.hash(nome, conteudosInscritos, conteudosConcluidos);
     }
 
     public void inscreverBootcamp(Bootcamp bootcamp) {
-        this.cursosInscritos.addAll(bootcamp.getCursos());
-        this.mentoriasInscritas.addAll(bootcamp.getMentorias());
+        this.conteudosInscritos.addAll(bootcamp.getConteudos());
         bootcamp.getDevsInscritos().add(this);
     }
 
-    public void progredirCurso() {
-        Optional<Curso> curso = this.cursosInscritos.stream().findFirst();
-        if (curso.isPresent()) {
-            this.cursosConcluidos.add(curso.get());
-            this.cursosInscritos.remove(curso.get());
+    public void progredir() {
+        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+        if (conteudo.isPresent()) {
+            this.conteudosConcluidos.add(conteudo.get());
+            this.conteudosInscritos.remove(conteudo.get());
         } else {
             System.err.println("Você não está matriculado em nenhum conteúdo!");
         }
     }
 
-    public void progredirMentoria() {
-        Optional<Mentoria> mentoria = this.mentoriasInscritas.stream().findFirst();
-        if (mentoria.isPresent()) {
-            this.mentoriasConcluidas.add(mentoria.get());
-            this.mentoriasInscritas.remove(mentoria.get());
-        } else {
-            System.err.println("Você não está matriculado em nenhuma mentoria!");
-        }
-    }
-
     public double calcularTotalXp() {
         double soma = 0;
-        Iterator<Curso> iteratorCurso = this.cursosConcluidos.iterator();
-        Iterator<Mentoria> iteratorMentoria = this.mentoriasConcluidas.iterator();
+        Iterator<Conteudo> iterator = this.conteudosConcluidos.iterator();
 
-        while (iteratorCurso.hasNext()) {
-            double next = iteratorCurso.next().calcularXp();
-            soma += next;
-        }
-
-        while (iteratorMentoria.hasNext()) {
-            double next = iteratorMentoria.next().calcularXp();
+        while (iterator.hasNext()) {
+            double next = iterator.next().calcularXp();
             soma += next;
         }
 

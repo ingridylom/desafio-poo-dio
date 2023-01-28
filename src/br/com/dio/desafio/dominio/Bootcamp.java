@@ -12,8 +12,7 @@ public class Bootcamp {
     private final LocalDate dataInicial = LocalDate.now();
     private final LocalDate dataFinal = dataInicial.plusDays(45);
     private Set<Dev> devsInscritos = new LinkedHashSet<>();
-    private Set<Curso> cursos = new LinkedHashSet<>();
-    private Set<Mentoria> mentorias = new LinkedHashSet<>();
+    private Set<Conteudo> conteudos = new LinkedHashSet<>();
     // endregion
 
     // region Getters and setters
@@ -49,20 +48,12 @@ public class Bootcamp {
         this.devsInscritos = devsInscritos;
     }
 
-    public Set<Curso> getCursos() {
-        return cursos;
+    public Set<Conteudo> getConteudos() {
+        return conteudos;
     }
 
-    public void setCursos(Set<Curso> cursos) {
-        this.cursos = cursos;
-    }
-
-    public Set<Mentoria> getMentorias() {
-        return mentorias;
-    }
-
-    public void setMentorias(Set<Mentoria> mentorias) {
-        this.mentorias = mentorias;
+    public void setConteudos(Set<Conteudo> conteudos) {
+        this.conteudos = conteudos;
     }
     // endregion
 
@@ -79,13 +70,12 @@ public class Bootcamp {
                 Objects.equals(dataInicial, bootcamp.dataInicial) &&
                 Objects.equals(dataFinal, bootcamp.dataFinal) &&
                 Objects.equals(devsInscritos, bootcamp.devsInscritos) &&
-                Objects.equals(cursos, bootcamp.cursos) &&
-                Objects.equals(mentorias, bootcamp.mentorias);
+                Objects.equals(conteudos, bootcamp.conteudos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, descricao, dataInicial, dataFinal, devsInscritos, cursos, mentorias);
+        return Objects.hash(nome, descricao, dataInicial, dataFinal, devsInscritos, conteudos);
     }
     // endregion
 }
