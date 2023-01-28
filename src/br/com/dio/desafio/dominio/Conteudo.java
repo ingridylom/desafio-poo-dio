@@ -1,14 +1,13 @@
 package br.com.dio.desafio.dominio;
 
 public abstract class Conteudo {
-
+    // region Properties
     protected static final double XP_PADRAO = 10d;
-
     private String titulo;
     private String descricao;
+    // endregion
 
-    public abstract double calcularXp();
-
+    // region Getters and setters
     public String getTitulo() {
         return titulo;
     }
@@ -24,4 +23,9 @@ public abstract class Conteudo {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    // endregion
+
+    // region Methods
+    public abstract double calcularXp();
+    // endregion
 }

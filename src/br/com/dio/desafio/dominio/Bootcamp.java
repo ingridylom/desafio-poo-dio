@@ -1,13 +1,12 @@
 package br.com.dio.desafio.dominio;
 
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
 public class Bootcamp {
-    //region Properties
+    // region Properties
     private String nome;
     private String descricao;
     private final LocalDate dataInicial = LocalDate.now();
@@ -15,9 +14,9 @@ public class Bootcamp {
     private Set<Dev> devsInscritos = new LinkedHashSet<>();
     private Set<Curso> cursos = new LinkedHashSet<>();
     private Set<Mentoria> mentorias = new LinkedHashSet<>();
-    //endregion
+    // endregion
 
-    //region Getters and setters
+    // region Getters and setters
     public String getNome() {
         return nome;
     }
@@ -65,27 +64,28 @@ public class Bootcamp {
     public void setMentorias(Set<Mentoria> mentorias) {
         this.mentorias = mentorias;
     }
-    //endregion
+    // endregion
 
-    //region Methods
+    // region Methods
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Bootcamp bootcamp = (Bootcamp) o;
-        return
-            Objects.equals(nome, bootcamp.nome) &&
-            Objects.equals(descricao, bootcamp.descricao) &&
-            Objects.equals(dataInicial, bootcamp.dataInicial) &&
-            Objects.equals(dataFinal, bootcamp.dataFinal) &&
-            Objects.equals(devsInscritos, bootcamp.devsInscritos) &&
-            Objects.equals(cursos, bootcamp.cursos) &&
-            Objects.equals(mentorias, bootcamp.mentorias);
+        return Objects.equals(nome, bootcamp.nome) &&
+                Objects.equals(descricao, bootcamp.descricao) &&
+                Objects.equals(dataInicial, bootcamp.dataInicial) &&
+                Objects.equals(dataFinal, bootcamp.dataFinal) &&
+                Objects.equals(devsInscritos, bootcamp.devsInscritos) &&
+                Objects.equals(cursos, bootcamp.cursos) &&
+                Objects.equals(mentorias, bootcamp.mentorias);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(nome, descricao, dataInicial, dataFinal, devsInscritos, cursos, mentorias);
     }
-    //endregion
+    // endregion
 }

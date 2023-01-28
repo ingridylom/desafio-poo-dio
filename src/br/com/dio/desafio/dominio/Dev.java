@@ -10,38 +10,6 @@ public class Dev {
     // endregion
 
     // region Getters and setters
-    public void inscreverBootcamp(Bootcamp bootcamp) {
-        this.cursosInscritos.addAll(bootcamp.getCursos());
-        bootcamp.getDevsInscritos().add(this);
-    }
-
-    public void progredir() {
-        Optional<Curso> conteudo = this.cursosInscritos.stream().findFirst();
-        if (conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.cursosInscritos.remove(conteudo.get());
-        } else {
-            System.err.println("Você não está matriculado em nenhum conteúdo!");
-        }
-    }
-
-    public double calcularTotalXp() {
-        Iterator<Curso> iterator = this.conteudosConcluidos.iterator();
-        double soma = 0;
-        while (iterator.hasNext()) {
-            double next = iterator.next().calcularXp();
-            soma += next;
-        }
-        return soma;
-
-        /*
-         * return this.conteudosConcluidos
-         * .stream()
-         * .mapToDouble(Curso::calcularXp)
-         * .sum();
-         */
-    }
-
     public String getNome() {
         return nome;
     }
@@ -82,6 +50,38 @@ public class Dev {
     @Override
     public int hashCode() {
         return Objects.hash(nome, cursosInscritos, conteudosConcluidos);
+    }
+
+    public void inscreverBootcamp(Bootcamp bootcamp) {
+        this.cursosInscritos.addAll(bootcamp.getCursos());
+        bootcamp.getDevsInscritos().add(this);
+    }
+
+    public void progredir() {
+        Optional<Curso> conteudo = this.cursosInscritos.stream().findFirst();
+        if (conteudo.isPresent()) {
+            this.conteudosConcluidos.add(conteudo.get());
+            this.cursosInscritos.remove(conteudo.get());
+        } else {
+            System.err.println("Você não está matriculado em nenhum conteúdo!");
+        }
+    }
+
+    public double calcularTotalXp() {
+        Iterator<Curso> iterator = this.conteudosConcluidos.iterator();
+        double soma = 0;
+        while (iterator.hasNext()) {
+            double next = iterator.next().calcularXp();
+            soma += next;
+        }
+        return soma;
+
+        /*
+         * return this.conteudosConcluidos
+         * .stream()
+         * .mapToDouble(Curso::calcularXp)
+         * .sum();
+         */
     }
     // endregion
 }
