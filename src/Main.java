@@ -112,7 +112,7 @@ public class Main {
         devIngridy.progredir();
         devIngridy.progredir();
         devIngridy.progredir();
-        System.out.println("-");
+        System.out.println("#############");
         System.out.println("Conteudos Inscritos Ingridy:" + devIngridy.getConteudosInscritos());
         System.out.println("Conteudos Concluídos Ingridy:" + devIngridy.getConteudosConcluidos());
         System.out.println("XP:" + devIngridy.calcularTotalXp());
@@ -126,7 +126,15 @@ public class Main {
         devMayron.progredir();
         devMayron.progredir();
         devMayron.progredir();
-        System.out.println("-");
+        devMayron.progredir();
+        devMayron.progredir();
+        System.out.println("#############");
+        System.out.println("Conteudos Inscritos Mayron:" + devMayron.getConteudosInscritos());
+        System.out.println("Conteudos Concluidos Mayron:" + devMayron.getConteudosConcluidos());
+        System.out.println("XP:" + devMayron.calcularTotalXp());
+        devMayron.regredir();
+        devMayron.regredir();
+        System.out.println("#############");
         System.out.println("Conteudos Inscritos Mayron:" + devMayron.getConteudosInscritos());
         System.out.println("Conteudos Concluidos Mayron:" + devMayron.getConteudosConcluidos());
         System.out.println("XP:" + devMayron.calcularTotalXp());
