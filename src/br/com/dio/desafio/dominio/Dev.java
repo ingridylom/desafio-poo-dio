@@ -6,7 +6,9 @@ public class Dev {
     // region Properties
     private String nome;
     private Set<Curso> cursosInscritos = new LinkedHashSet<>();
-    private Set<Curso> conteudosConcluidos = new LinkedHashSet<>();
+    private Set<Curso> cursosConcluidos = new LinkedHashSet<>();
+    private Set<Mentoria> mentoriasInscritas = new LinkedHashSet<>();
+    private Set<Mentoria> mentoriasConcluidas = new LinkedHashSet<>();
     // endregion
 
     // region Getters and setters
@@ -27,11 +29,27 @@ public class Dev {
     }
 
     public Set<Curso> getConteudosConcluidos() {
-        return conteudosConcluidos;
+        return cursosConcluidos;
     }
 
-    public void setConteudosConcluidos(Set<Curso> conteudosConcluidos) {
-        this.conteudosConcluidos = conteudosConcluidos;
+    public void setConteudosConcluidos(Set<Curso> cursosConcluidos) {
+        this.cursosConcluidos = cursosConcluidos;
+    }
+
+    public Set<Mentoria> getMentoriasInscritas() {
+        return mentoriasInscritas;
+    }
+
+    public void setMentoriasInscritas(Set<Mentoria> mentoriasInscritas) {
+        this.mentoriasInscritas = mentoriasInscritas;
+    }
+
+    public Set<Mentoria> getMentoriasConcluidas() {
+        return mentoriasConcluidas;
+    }
+
+    public void setMentoriasConcluidas(Set<Mentoria> mentoriasConcluidas) {
+        this.mentoriasConcluidas = mentoriasConcluidas;
     }
     // endregion
 
@@ -44,12 +62,12 @@ public class Dev {
             return false;
         Dev dev = (Dev) o;
         return Objects.equals(nome, dev.nome) && Objects.equals(cursosInscritos, dev.cursosInscritos)
-                && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
+                && Objects.equals(cursosConcluidos, dev.cursosConcluidos);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nome, cursosInscritos, conteudosConcluidos);
+        return Objects.hash(nome, cursosInscritos, cursosConcluidos);
     }
 
     public void inscreverBootcamp(Bootcamp bootcamp) {
@@ -58,30 +76,31 @@ public class Dev {
     }
 
     public void progredir() {
-        Optional<Curso> conteudo = this.cursosInscritos.stream().findFirst();
-        if (conteudo.isPresent()) {
-            this.conteudosConcluidos.add(conteudo.get());
-            this.cursosInscritos.remove(conteudo.get());
+        Optional<Curso> curso = this.cursosInscritos.stream().findFirst();
+        if (curso.isPresent()) {
+            this.cursosConcluidos.add(curso.get());
+            this.cursosInscritos.remove(curso.get());
         } else {
             System.err.println("Você não está matriculado em nenhum conteúdo!");
         }
     }
 
     public double calcularTotalXp() {
-        Iterator<Curso> iterator = this.conteudosConcluidos.iterator();
         double soma = 0;
-        while (iterator.hasNext()) {
-            double next = iterator.next().calcularXp();
+        Iterator<Curso> iteratorCurso = this.cursosConcluidos.iterator();
+        Iterator<Mentoria> iteratorMentoria = this.mentoriasConcluidas.iterator();
+
+        while (iteratorCurso.hasNext()) {
+            double next = iteratorCurso.next().calcularXp();
             soma += next;
         }
-        return soma;
 
-        /*
-         * return this.conteudosConcluidos
-         * .stream()
-         * .mapToDouble(Curso::calcularXp)
-         * .sum();
-         */
+        while (iteratorMentoria.hasNext()) {
+            double next = iteratorMentoria.next().calcularXp();
+            soma += next;
+        }
+
+        return soma;
     }
     // endregion
 }
